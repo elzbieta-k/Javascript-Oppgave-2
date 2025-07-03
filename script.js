@@ -70,11 +70,11 @@ function greeter(name, time) {
   let message = "";
   if (time > 0 && time <= 5) {
     message = `God natt ${name}`;
-  } else if (time >= 6 && time <= 11) {
+  } else if (time <= 11) {
     message = `God morgen ${name}`;
-  } else if (time >= 12 && time <= 17) {
+  } else if (time <= 17) {
     message = `God dag ${name}`;
-  } else if (time >= 18 && time <= 23) {
+  } else if (time <= 23) {
     message = `God kveld ${name}`;
   } else if (time < 0 || time > 23) {
     message = `Ugyldig tid ${name}`;
@@ -86,7 +86,7 @@ function greeter(name, time) {
 }
 
 console.log(greeter("Ela"));
-console.log(greeter("Ela", 20));
+console.log(greeter("Ela", 5));
 console.log(greeter("Ann", 15));
 /******************************************************************************
 4.
@@ -270,21 +270,19 @@ Returner "😎Kun primitive verdier😎".
 ******************************************************************************/
 
 const checkingDataType = (value) => {
+  let message = "";
   if (typeof value === "string") {
-    return `😎 ${value} 😎`;
+    message = value;
   } else if (typeof value === "number") {
     value *= 2;
     value.toString();
-    return `😎 ${value} 😎`;
+    message = value;
   } else if (typeof value === "boolean") {
-    if (value === true) {
-      return `😎 Ja 😎`;
-    } else {
-      return `😎 Slapp av 😎`;
-    }
+    message = value ? "Ja" : "Slapp av";
   } else {
-    return `😎 Kun primitive verdier 😎`;
+    message = "Kun primitive verdier";
   }
+  return `😎 ${message} 😎`;
 };
 
 console.log(checkingDataType("Hello sunshine"));

@@ -25,8 +25,8 @@ function oddOrEven(tall) {
   return tall % 2 === 0 ? "Partall" : "Oddetall";
 }
 
-console.log(oddOrEven(5));
-console.log(oddOrEven(456));
+console.log(oddOrEven(7));
+console.log(oddOrEven(10));
 /******************************************************************************
 2.
 
@@ -39,10 +39,10 @@ Eksempel: "Dette er kult" skal returnere "DETTE ER KULT!"
 
 ******************************************************************************/
 
-const changeToUppercase = (string) => string.toUpperCase() + "!";
+const changeToUppercase = (string) => `${string.toUpperCase()}!`;
 
 console.log(changeToUppercase("Dette er kult"));
-console.log(changeToUppercase("Skal endres til store bokstaver"));
+console.log(changeToUppercase("Jeg blir en setning med store bokstaver"));
 
 /******************************************************************************
 3.
@@ -79,14 +79,14 @@ function greeter(name, time) {
   } else if (time < 0 || time > 23) {
     message = `Ugyldig tid ${name}`;
   } else if (time === undefined) {
-    message = `Feilmelding: skriv en tid ${name}`;
+    message = `Feilmelding: skriv en tid, ${name}`;
   }
 
   return message;
 }
 
 console.log(greeter("Ela"));
-console.log(greeter("Ela", 4));
+console.log(greeter("Ela", 20));
 console.log(greeter("Ann", 15));
 /******************************************************************************
 4.
@@ -130,15 +130,15 @@ Eksempel 3: "   vanskelig        " skal returnere "gøy".
 
 ******************************************************************************/
 
-// first funksjon tar kun string og erstatter ord "vanskelig" med "gøy" og fjerner mellomromm fra starten og slutten av stringen
+// first funksjon tar kun string og erstatter ord "vanskelig" med "gøy" inne i body av funksjonen og fjerner mellomromm fra starten og slutten av stringen
 
 function changingString(string) {
   const changedString = string.replace("vanskelig", "gøy").trim();
   return changedString;
 }
 
+// Sjekke om funksjonen funker
 console.log(changingString("       javascript er vanskelig          "));
-
 console.log(changingString(" Det er vanskelig å bruke metoder "));
 console.log(changingString("   vanskelig        "));
 
@@ -149,6 +149,7 @@ function changingStringTwo(string, replacedWord, newWord) {
   return changedString;
 }
 
+// Sjekke om funksjonen funker
 console.log(
   changingStringTwo(
     "       javascript er vanskelig          ",
@@ -156,17 +157,12 @@ console.log(
     "fun"
   )
 );
-
 console.log(
   changingStringTwo(" Det er vanskelig å bruke metoder ", "vanskelig", "gøy")
 );
-
 console.log(
   changingStringTwo(" Vi har fire årstider i Stavanger       ", "fire", "two")
 );
-// console.log("javascript er vanskelig".replace("vanskelig", "gøy"));
-// const newString = "  Javascript er vanskelig   ";
-// console.log(changingString(newString));
 
 /******************************************************************************
 6.
@@ -192,10 +188,12 @@ Ekstra utfordring: Lag et nytt array som kun inkluderer elementer som inneholder
 ******************************************************************************/
 // Steg 1
 items.shift();
+
+//Steg 2
 items[items.indexOf("Viskelær")] = "Linjal";
 console.log(items);
 
-// Steg 2
+// Steg 3
 const newArray = items.toSpliced(0, 2, "Markeringspenn");
 console.log(newArray);
 
@@ -203,7 +201,7 @@ console.log(newArray);
 const joinedString = newArray.join(" | ");
 console.log(joinedString);
 
-// Steg 4
+// Ekstra
 const filteredArray = items.filter((item) => item.includes("e"));
 console.log(filteredArray);
 /******************************************************************************
@@ -279,7 +277,7 @@ const checkingDataType = (value) => {
     value.toString();
     return `😎 ${value} 😎`;
   } else if (typeof value === "boolean") {
-    if (typeof value === "true") {
+    if (value === true) {
       return `😎 Ja 😎`;
     } else {
       return `😎 Slapp av 😎`;
@@ -289,7 +287,9 @@ const checkingDataType = (value) => {
   }
 };
 
-console.log(checkingDataType("Hey"));
-console.log(checkingDataType(5));
+console.log(checkingDataType("Hello sunshine"));
+console.log(checkingDataType(46.7));
+console.log(checkingDataType(50));
+console.log(checkingDataType(true));
 console.log(checkingDataType(false));
-console.log(checkingDataType([5, 5, 6]));
+console.log(checkingDataType(["sol", 5, 6]));
